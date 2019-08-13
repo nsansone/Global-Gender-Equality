@@ -11,6 +11,12 @@ Users will be able to click on a country and get more data for  that specific co
 Users will be able to shift throughout different years
 Users will be able to filter by different equality metrics as well as look at an aggregate score
 
+MVPs
+3D interactive globe
+assembling data 
+implementing way to look at data globally (color scales?)
+implementing click to get more detailed look at data for one country
+
 Wireframe
 
 https://wireframe.cc/pro/pp/86d3a6157266646
@@ -18,11 +24,29 @@ https://wireframe.cc/pro/pp/86d3a6157266646
 Technologies
 
 Javascript
+webpack
 D3
 D3 Geojson
 HTML5
 SVG
 google maps api
+
+Timeline
+
+day 1:
+  -look at MDN DOM Manipulation and D3 tutorials
+  -get a better understanding of 3D graphics in JS
+  -start assembling data 
+  
+day 2:
+  -spend time on globe
+  -finish choosing data
+  
+day3: 
+  -finish globe 
+   
+day 4: 
+  -create view for individual country data
 
 Bonus
 
