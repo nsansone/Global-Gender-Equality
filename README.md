@@ -13,14 +13,16 @@ Users will be able to filter by different equality metrics as well as look at an
 
 Wireframe
 
-
+https://wireframe.cc/pro/pp/86d3a6157266646
 
 Technologies
 
 Javascript
 D3
+D3 Geojson
 HTML5
 SVG
+google maps api
 
 Bonus
 
