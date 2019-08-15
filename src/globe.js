@@ -1,4 +1,3 @@
-
 var width = 800,
   height = 1000,
   sens = 0.2,
