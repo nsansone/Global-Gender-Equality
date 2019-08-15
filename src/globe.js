@@ -139,7 +139,7 @@ function ready(error, world, countryData, percentData) {
   //   });
   // }
   
-  enableRotation();
+  // enableRotation();
 
 
   //Drawing countries on the globe
