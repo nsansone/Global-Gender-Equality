@@ -8,13 +8,79 @@
   <script src="https://d3js.org/topojson.v1.min.js"></script>
   <script src="https://d3js.org/queue.v1.min.js"></script>
   <link href="style.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css"
+    integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
 </head>
 
 
 <body>
-  <div class="globe"></div>
-  <div class="show-content"></div>
+  <header>
+
+    <h1 class="title">Global Gender Equality</h1>
+    <div class="personal-links">
+      <i class="fab fa-angellist"></i>
+      <i class="fab fa-github"></i>
+      <i class="fab fa-linkedin"></i>
+
+    </div>
+  </header>
+  <div class="content">
+
+    <div>
+      <svg class="globe">
+
+        <defs>
+          
+          <filter id="yellow-glow" primitiveUnits="objectBoundingBox">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="0.3" />
+            <feComposite in2="SourceAlpha" operator="in" />
+            <feSpecularLighting surfaceScale="0.1" specularConstant="0.6" specularExponent="20" lighting-color="lightYellow"
+              result="highlight">
+              <fePointLight x="0.35" y="0.35" z="0.7" />
+            </feSpecularLighting>
+            <feComposite in="SourceGraphic" in2="highlight" operator="arithmetic" k1="0" k2="1" k3="0.9" k4="0" />
+            <feComposite in2="SourceAlpha" operator="in" />
+          </filter>
+        </defs>
+      </svg>
+    </div>
+    <div class="select-cont">
+      <h1 class="select-text">Select a Country: <select name="countries" class="select"></select></h1>
+
+      <div class="show-content-cont">
+        <div class="show-content">
+          <h1>About the data</h1>
+          <p class="intro">
+            The 2030 Agenda for Sustainable Development, adopted by all United Nations Member States in 2015, provides a shared
+            blueprint for peace and prosperity for people and the planet, now and into the future. At its heart are the 17
+            Sustainable Development Goals (SDGs), which are an urgent call for action by all countries - developed and developing -
+            in a global partnership.
+          </p>
+          <p class="intro">
+            While some indicators of gender equality are progressing, such as a significant decline in the prevalence of female
+            genital mutilation and early marriage, the overall numbers continue to be high. Moreover, insufficient progress on
+            structural issues at the root of gender inequality, such as legal discrimination, unfair social norms and attitudes,
+            decision-making on sexual and reproductive issues and low levels of political participation, are undermining the ability
+            to achieve Sustainable Development Goal 5 (Gender Equality).
+          </p>
+          <p class="intro">
+            This data visualization shows the aggregate scores in this category mapped by country as well as a more detailed breakdown of indicators that are used to generate aggregate scores. Click on a country or select from the above dropdown for a breakdown of their scores.
+
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- <svg class="chart"></svg> -->
+ 
+  <script>
+
+</script>
 </body>
+
 
 <script src="./dist/main.js"></script>
 </html>

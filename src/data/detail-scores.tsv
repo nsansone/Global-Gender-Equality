@@ -1,0 +1,175 @@
+name	a	b	c	d	e
+Denmark	100	99.4	100	74.9	85.8
+Finland	100	99.4	75	84.2	77
+Sweden	100	99.9	100	87.1	100
+Norway	100	89	100	82.8	77.8
+Netherlands	100	98.4	100	72.2	75
+Slovenia	100	98.3	100	73.3	100
+Germany	100	99.3	100	61.5	66.6
+Canada	98	94	100	54	100
+Ireland	100	98.8	25	44.3	53.4
+Australia	99	96	100	57.3	48.2
+New Zealand 	99	91	65	76.7	74
+Switzerland	100	84	100	65	57.2
+Austria	97	96.6	100	68.9	46.2
+France	97	99.5	100	78	100
+Belgium	98	98.1	100	76.2	46.2
+Portugal	100	98.4	100	69.6	44.4
+United Kingdom	97	98.3	-	64	61.6
+Estonia	100	99	100	53.5	57.2
+Italy	-	97.3	100	61.9	55.6
+Czechia	100	97.8	100	44.2	35.2
+Japan	99	86	75	20.2	31.6
+Slovakia	99	95.8	100	40.2	28.6
+Spain	96	99.8	100	78.3	77
+Lithuania	100	98	100	42.6	42.8
+Latvia	98	98	100	32.2	46.2
+Croatia	98	97.7	100	37.1	40
+Bulgaria	99	98.7	100	47.5	100
+United States	98	-	100	39	52.2
+Greece	98	98.8	100	36.7	42.2
+Poland	99	94.7	50	56.1	45.4
+Israel	97	-	65	55	38
+Uruguay	75.4	98.5	100	40.4	71.4
+Montenegro	95.5	97.3	100	46.9	40
+Serbia	96.8	96.2	100	68.8	52.6
+Hungary	99	96.5	100	20.1	0
+Belarus	96.8	95.9	100	69.1	7.2
+Bosnia and Herzegovina	96.5	95.2	100	42.9	44.4
+Chile	94	88	25	31.7	69.6
+Georgia	86	93	100	32.2	22.2
+Korea, Republic of	100	81	50	34.2	18.2
+Macedonia, the former Yugoslav Republic of	93.1	85.5	100	75	16
+Romania	93	95.1	100	41.3	48
+Costa Rica	78.8	96.5	50	70.2	60.8
+Kazakhstan	93	85.8	100	54.2	11.2
+Ukraine	90.9	97.1	100	24.6	26
+Argentina	87	98	50	77.8	34.8
+Trinidad and Tobago	88.8	92	65	61.9	57.2
+Armenia	94.7	89.9	100	36.2	22.2
+Jamaica	92.1	95.1	65	34.9	33.4
+Albania	90.4	70.2	100	55.7	80
+Thailand	77.5	91.4	65	9.6	22.2
+Mongolia	94.8	89.9	100	34.2	26.6
+Moldova, Republic of	87.8	88.8	100	45.5	44.4
+Paraguay	78.4	-	25	27.5	30.8
+Kyrgyzstan	88.4	67.2	100	38.3	28.6
+Colombia	76.6	89	65	37.3	70.6
+Ecuador	-	75	50	75.9	55
+Russian Federation	92	75	100	31.6	19.4
+Malaysia	94	58	65	20.7	16.6
+Azerbaijan	89	72	100	33.6	0
+Viet Nam	89.4	71.8	100	53.4	8.4
+Panama	73.6	94.3	40	36.6	58.8
+Mexico	73.9	95	40	85.2	31.6
+Algeria	97.5	41	65	51.5	26.6
+Peru	78.5	66	50	55.4	73.6
+Tunisia	98.4	69.7	100	62.7	46.2
+Bolivia, Plurinational State of	80.6	83.9	50	93.8	54.6
+Indonesia	86.4	65.5	40	39.6	51.4
+Turkey	85.3	86.7	100	29.1	7.6
+South Africa	-	66	100	84.8	83.4
+Tajikistan	88.4	40.4	100	38.1	11.8
+Philippines	85	87.1	25	58.9	50
+China	-	51	100	48.5	20
+Namibia	93.1	71.8	65	92.3	48
+Dominican Republic	64.1	98	25	53.7	41.6
+Brazil	-	85	40	21.4	8
+El Salvador	74.5	92.3	25	64.3	42.8
+Belize	74.1	94.8	75	18.8	0
+Sri Lanka	88.2	47	25	11.6	8.6
+Honduras	66.4	87.6	25	42.2	54.6
+Venezuela, Bolivarian Republic of	-	-	25	44.3	48.4
+Botswana	-	83	65	19	31.6
+Nicaragua	64.8	86	25	91.3	100
+Jordan	91.6	30.1	50	30.8	14.2
+Lebanon	93.9	90.3	25	6.3	6.8
+Egypt	82.6	64.3	25	29.9	23.6
+Morocco	84	36	50	41	26
+Guatemala	70.5	89	25	25.3	37.6
+Bhutan	74.2	31.6	40	17	20
+Rwanda	93.2	58.6	50	77.5	100
+Saudi Arabia	94	-	50	39.7	0
+Ghana	79.3	71.7	65	25.5	34.8
+India	72.7	53	75	23.6	37
+Cambodia	81.5	49.6	100	40.7	18.2
+Kenya	77.1	58.2	50	43.6	45.4
+Myanmar	84	48.8	25	20.3	10
+Lesotho	82.7	62.9	50	44.3	36.4
+Zimbabwe	67.6	61.3	50	66.4	32.2
+Tanzania, United Republic of	69.5	42	25	74.4	40
+Nepal	60.5	57.1	100	7.3	7.4
+Iraq	75.7	48.8	25	50.6	21
+Senegal	69	43.5	25	83.6	40
+Lao People's Democratic Republic	64.6	41.8	25	55	14.8
+Malawi	57.9	83.7	25	33.3	44.4
+Uganda	60.3	41.7	25	68.6	73.4
+Zambia	68.6	53.1	75	35.9	66.6
+Benin	74.1	64	50	14.5	28.6
+Bangladesh	41.4	71.7	25	40.6	12.6
+Cote d'Ivoire	73	52.1	25	21.2	41.8
+Angola	69.7	74.8	25	60.9	44.4
+Pakistan	79	57.8	50	41.2	0
+Mozambique	51.8	77.1	50	79.2	47.6
+Togo	78.2	71.3	50	35.2	40
+Burkina Faso	48.4	56.5	50	22	26
+Ethiopia	59.7	37	50	77.5	20
+Cameroon	69	63.9	50	62.2	34.2
+Madagascar	58.8	54.8	25	38.4	35.8
+Sierra Leone	61.1	37.2	65	24.8	27.6
+Liberia	64.1	57.5	65	19.7	31.6
+Nigeria	56.5	65.3	25	11.1	24
+Mali	48.5	27.4	40	17.7	48.4
+Mauritania	63	73.4	25	50.3	61.6
+Niger	23.7	40.4	50	33.9	32.4
+Yemen	68.1	51.3	25	0	10.8
+Congo	72.7	45.8	25	22.5	45.8
+Congo, the Democratic Republic of the	62.7	25.2	25	17.9	23.2
+Chad	33.1	26.5	50	25.5	28.6
+Afghanistan	-	-	-	-	-
+Antartica	-	-	-	-	-
+Bahamas	-	-	-	-	-
+Brunei Darussalam	-	-	-	-	-
+Burundi	-	-	-	-	-
+Central African Republic	-	-	-	-	-
+Cuba	-	-	-	-	-
+Cyprus	-	-	-	-	-
+Djibouti	-	-	-	-	-
+Equatorial Guinea	-	-	-	-	-
+Eritrea	-	-	-	-	-
+Falkland Islands (Malvinas)	-	-	-	-	-
+Fiji	-	-	-	-	-
+French Southern Territories	-	-	-	-	-
+Gabon	-	-	-	-	-
+Gambia	-	-	-	-	-
+Greenland	-	-	-	-	-
+Guinea	-	-	-	-	-
+Guinea-Bissau	-	-	-	-	-
+Guyana	-	-	-	-	-
+Haiti	-	-	-	-	-
+Iceland	-	-	-	-	-
+Iran, Islamic Republic of	-	-	-	-	-
+Korea, Democratic People's Republic of	-	-	-	-	-
+Kuwait	-	-	-	-	-
+Libya	-	-	-	-	-
+Luxembourg	-	-	-	-	-
+New Caledonia	-	-	-	-	-
+Oman	-	-	-	-	-
+Palestinian Territory, Occupied	-	-	-	-	-
+Papua New Guinea	-	-	-	-	-
+Puerto Rico	-	-	-	-	-
+Qatar	-	-	-	-	-
+Solomon Islands	-	-	-	-	-
+Somalia	-	-	-	-	-
+South Sudan	-	-	-	-	-
+Sudan	-	-	-	-	-
+Suriname	-	-	-	-	-
+Swaziland	-	-	-	-	-
+Syrian Arab Republic	-	-	-	-	-
+Taiwan, Province of China	-	-	-	-	-
+Timor-Leste	-	-	-	-	-
+Turkmenistan	-	-	-	-	-
+United Arab Emirates	-	-	-	-	-
+Uzbekistan	-	-	-	-	-
+Vanuatu	-	-	-	-	-
+Western Sahara	-	-	-	-	-

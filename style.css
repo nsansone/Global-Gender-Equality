@@ -1,6 +1,14 @@
-
+.content {
+  width: 100%;
+}
+.globe {
+  width: 800px;
+  height: 750px;
+  fill: darkred;
+   filter: url("#yellow-glow");
+}
 .water {
-    fill: pink;
+    /* background: radial-gradient(circle at 100px 100px, #5cabff, #000);; */
   }
 
   .land {
@@ -15,16 +23,20 @@
   }
 
   .focused {
-    fill: #33CC33;
+    fill: #33CC33 !important;
   }
 
   select {
-    position: absolute;
+    /* position: absolute;
     top: 20px;
-    left: 580px;
+    left: 580px; */
     border: solid #ccc 1px;
     padding: 3px;
     box-shadow: inset 1px 1px 2px #ddd8dc;
+    height: 40px;
+    margin-left: 15px;
+    font-size: 14px;
+
   }
 
   .countryTooltip {
@@ -40,14 +52,115 @@
     font-family: sans-serif;
   }
 
-  body {
+  header {
     display: flex;
+    justify-content: space-between;
+    height: 80px;
     align-items: center;
   }
 
-  .show-content {
-    width: 600px;
-    height: 600px;
-    background-color: pink;
+  .title {
+    font-size: 70px;
+    font-family: "Karla", sans-serif;
+    padding-left: 80px;
+    color: #373737;
   }
+
+  .personal-links {
+    width: 130px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 35px;
+    padding-right: 25px;
+    color: #373737;
+
+
+  }
+
+  body {
+    /* background: url("https://jasperumc.org/wp-content/uploads/2018/10/wallpaper-cream-white-pattern-background-light-line-texture-x-rhwallherecom-ivory-off-paper-picture-free-1.jpg"); */
+    background-size: cover;
+    background-color: white;
+    
+  }
+
+  .select-text {
+    font-size: 32px;
+    font-family: "Karla", sans-serif;
+    display: flex;
+    align-items: center;
+    color: #373737;
+  }
+  
+  .content {
+    display: flex;
+    align-items: center;
+    
+  }
+
+  .show-content-cont {
+  
+    width: 550px;
+    height: 600px;
+    background-color: white;
+    padding: 0px 25px;
+    border: 5px solid #958A7B;
+    border-radius: 10px;
+    margin-right: 50px;
+    
+  }
+
+  .intro {
+    font-size: 18px;
+    text-align: justify;
+    font-family: "Karla", sans-serif;
+    margin: 10px 0px;
+  }
+
+
+
+  .show-content-cont h1 {
+    font-size: 45px;
+    font-family: "Karla", sans-serif;
+    color: #373737;
+    margin: 0px;
+    padding-top: 10px;
+
+  }
+
+.show-content-p {
+  font-size: 16px;
+  /* margin: 10px; */
+  
+}
+/* .chart div {
+  font: 10px sans-serif;
+  background-color: steelblue;
+  text-align: right;
+  padding: 3px;
+  margin: 3px;
+  color: white;
+} */
+.chart {
+  padding: 20px;
+}
+
+.bar {
+  fill: #cacaca;
+}
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
 
