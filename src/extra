@@ -1,0 +1,17 @@
+        //https://stackoverflow.com/questions/24030267/d3-transition-for-transform-translate-not-working-for-div
+        // var startTranslateState = "translate(-300px,0px)";
+        // var endTranslateState = "translate(0px,0px)";
+        // var translateInterpolator = d3.interpolateString( startTranslateState, endTranslateState );
+        // d3.select(".show-content-cont")
+        //   .transition()
+        //   .styleTween("transform", function(d) {
+        //       return translateInterpolator;
+        //   })
+        //   .transition()
+        //   .style("border", "10px solid #798478")
+        //   .style("border-radius", "10px") 
+        //   .style("background-color", "white")     
+            //  d3.select(".show-content")
+            //    .transition()
+            //    .duration(1000)
+            //    .style("background-color", "pink");

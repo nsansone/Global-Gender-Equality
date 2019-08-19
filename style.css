@@ -73,8 +73,6 @@
     font-size: 35px;
     padding-right: 25px;
     color: #373737;
-
-
   }
 
   body {
@@ -120,6 +118,7 @@
 
 
   .show-content-cont h1 {
+    width: 100%;
     font-size: 45px;
     font-family: "Karla", sans-serif;
     color: #373737;
@@ -133,6 +132,15 @@
   /* margin: 10px; */
   
 }
+
+.no-data {
+  font-size: 40px;
+  font-family: "Karla", sans-serif;
+  color: #373737;
+  text-align: center;
+  margin-top: 50px;
+
+}
 /* .chart div {
   font: 10px sans-serif;
   background-color: steelblue;
@@ -142,7 +150,7 @@
   color: white;
 } */
 .chart {
-  padding: 20px;
+  padding: 10px;
 }
 
 .bar {

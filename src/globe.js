@@ -7,7 +7,7 @@ function type(d) {
 function buildChart(data) {
   var margin = { top: 20, right: 30, bottom: 30, left: 40 },
     width = 400 - margin.left - margin.right,
-    height = 250 - margin.top - margin.bottom;
+    height = 220 - margin.top - margin.bottom;
 
   var x = d3.scale.ordinal().rangeRoundBands([0, width], 0.1);
 
@@ -314,8 +314,19 @@ function ready(error, world, countryData, percentData, detailData) {
     //Mouse events
 
     .on("click", function(d) {
-      
+        svg.selectAll(".focused").classed("focused", (focused = false));
+        d3.select(this).attr("class", "focused");
         let name = countryById[d.id];
+        if (noDataCountries.includes(name)) {
+          const showContentCont = d3.select("div.show-content-cont");
+          showContentCont.selectAll("*").remove();
+           showContentCont
+             .append("h1")
+             .text(countryById[d.id])
+             .append("p")
+             .attr("class", "no-data")
+             .text("Data has not been collected for this country in this study");
+        } else {
         let arr = [];
         let alpha = ["A", "B", "C", "D", "E"]
         countryDetails[name].forEach((val, idx) => {
@@ -326,27 +337,9 @@ function ready(error, world, countryData, percentData, detailData) {
           }
         });
         const showContentCont = d3.select("div.show-content-cont");
-          showContentCont
-            .selectAll("*")
-            .remove()
-
-        //https://stackoverflow.com/questions/24030267/d3-transition-for-transform-translate-not-working-for-div
-        // var startTranslateState = "translate(-300px,0px)";
-        // var endTranslateState = "translate(0px,0px)";
-        // var translateInterpolator = d3.interpolateString( startTranslateState, endTranslateState );
-        // d3.select(".show-content-cont")
-        //   .transition()
-        //   .styleTween("transform", function(d) {
-        //       return translateInterpolator;
-        //   })
-        //   .transition()
-        //   .style("border", "10px solid #798478")
-        //   .style("border-radius", "10px") 
-        //   .style("background-color", "white")     
-            //  d3.select(".show-content")
-            //    .transition()
-            //    .duration(1000)
-            //    .style("background-color", "pink");
+        showContentCont
+          .selectAll("*")
+          .remove()
         showContentCont
           .append("h1")
           .text(countryById[d.id])
@@ -368,14 +361,12 @@ function ready(error, world, countryData, percentData, detailData) {
           .append("p")
           .attr("class", "show-content-p")
           .text("E: Proportion of ministerial/senior government positions held by women");
-        // showContentCont
-        //   .append("div")
-        //   .text(countryDetails[name].toString());
         showContentCont
           .append("svg")
           .attr("class", "chart")
         buildChart(arr);
-    })
+    }})
+  
 
     .on("mouseover", function(d) {
       countryTooltip
@@ -396,14 +387,22 @@ function ready(error, world, countryData, percentData, detailData) {
 
   //Country focus on option select
 
-  d3.select("select").on("change", function(d) {
-
-    
+  d3.select("select").on("change", function() { 
     var rotate = projection.rotate(),
     focusedCountry = country(countries, this),
     p = d3.geo.centroid(focusedCountry);
 
     let name = countryById[focusedCountry.id];
+    if (noDataCountries.includes(name)) {
+          const showContentCont = d3.select("div.show-content-cont");
+          showContentCont.selectAll("*").remove();
+           showContentCont
+             .append("h1")
+             .text(countryById[focusedCountry.id])
+             .append("p")
+             .attr("class", "no-data")
+             .text("Data has not been collected for this country in this study");
+        } else {
     let arr = [];
     let alpha = ["A", "B", "C", "D", "E"];
     countryDetails[name].forEach((val, idx) => {
@@ -442,11 +441,9 @@ function ready(error, world, countryData, percentData, detailData) {
       .text(
         "E: Proportion of ministerial/senior government positions held by women"
       );
-    // showContentCont
-    //   .append("div")
-    //   .text(countryDetails[name].toString());
-    showContentCont.append("svg").attr("class", "chart");
-    buildChart(arr);
+      showContentCont.append("svg").attr("class", "chart");
+      buildChart(arr);
+    }
     svg.selectAll(".focused").classed("focused", (focused = false));
 
     //Globe rotating
