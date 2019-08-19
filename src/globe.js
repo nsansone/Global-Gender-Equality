@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 
 
 function type(d) {
@@ -84,7 +82,6 @@ function buildChart(data) {
 }
 
 //bar chart help from https://bost.ocks.org/mike/bar/2/
->>>>>>> master
 var width = 800,
   height = 750,
   sens = 0.2,
@@ -253,7 +250,7 @@ function ready(error, world, countryData, percentData, detailData) {
     // }
   }
   
-  // enableRotation();
+  enableRotation();
 
   // setTimeout(stopGlobe, 3000)
 
