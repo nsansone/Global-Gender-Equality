@@ -1,13 +1,96 @@
 
+
+function type(d) {
+  d.value = +d.value; // coerce to number
+  return d;
+}
+function buildChart(data) {
+  var margin = { top: 20, right: 30, bottom: 30, left: 40 },
+    width = 400 - margin.left - margin.right,
+    height = 250 - margin.top - margin.bottom;
+
+  var x = d3.scale.ordinal().rangeRoundBands([0, width], 0.1);
+
+  var y = d3.scale.linear().range([height, 0]);
+
+  var heightRatio = d3.max(data) / height
+
+  var xAxis = d3.svg
+    .axis()
+    .scale(x)
+    .orient("bottom");
+
+  var yAxis = d3.svg
+    .axis()
+    .scale(y)
+    .orient("left")
+    .ticks(10, "%");
+
+  var chart = d3
+    .select(".chart")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    x.domain(
+      data.map(function(d) {
+        return d.name;
+      })
+    );
+    y.domain([
+      0,
+      d3.max(data, function(d) {
+        return d.value;
+      })
+    ]);
+
+    chart
+      .append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+    chart
+      .append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+      .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 100)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      // .text("Frequency");
+
+    chart
+      .selectAll(".bar")
+      .data(data)
+      .enter()
+      .append("rect")
+      .attr("class", "bar")
+      .attr("x", function(d) {
+        return x(d.name);
+      })
+      .attr("y", function(d) {
+        return y(d.value);
+      })
+      .attr("height", function(d) {
+        return height - y(d.value);
+      })
+      .attr("width", x.rangeBand());
+      
+}
+
+//bar chart help from https://bost.ocks.org/mike/bar/2/
 var width = 800,
-  height = 1000,
+  height = 750,
   sens = 0.2,
   focused;
 
 var percentColors = [
-  { pct: 0.0, color: { r: 176, g: 224, b: 230 } },
-  { pct: 0.5, color: { r: 0xff, g: 0xff, b: 0 } },
-  { pct: 1.0, color: { r: 0x00, g: 0xff, b: 0 } }
+  { pct: 0.0, color: { r: 169, g: 169, b: 169 } },
+  { pct: 0.5, color: { r: 128, g: 128, b: 128 } },
+  { pct: 1.0, color: { r: 0, g: 0, b: 0 } }
 ];
 
 var getColorForPercentage = function(pct) {
@@ -52,9 +135,9 @@ var path = d3.geo.path().projection(projection);
 
 var svg = d3
   .select(".globe")
-  .append("svg")
-  .attr("width", width)
-  .attr("height", height);
+  // .append("svg")
+  // .attr("width", width)
+  // .attr("height", height)
 
 //Adding water
 
@@ -62,7 +145,7 @@ svg
   .append("path")
   .datum({ type: "Sphere" })
   .attr("class", "water")
-  .style("fill", "pink")
+  // .style("fill", "whitesmoke")
   .attr("d", path);
 
 var countryTooltip = d3
@@ -70,23 +153,34 @@ var countryTooltip = d3
     .append("div")
     .attr("class", "countryTooltip"),
   countryList = d3
-    .select(".globe")
-    .append("select")
-    .attr("name", "countries");
+    .select(".select")
+    // .append("select")
+    // .attr("name", "countries");
 
 queue()
   .defer(d3.json, "src/data/world-110m.json")
   .defer(d3.tsv, "src/data/world-110m-country-names.tsv")
   .defer(d3.tsv, "src/data/aggregate-scores.tsv")
+  .defer(d3.tsv, "src/data/detail-scores.tsv")
   .await(ready);
 
 //Main function
 
-function ready(error, world, countryData, percentData) {
+function ready(error, world, countryData, percentData, detailData) {
+  const noDataCountries = ["Afghanistan", "Antartica", "Bahamas", "Brunei Darussalam","Burundi",
+                          "Central African Republic", "Cuba","Cyprus","Djibouti","Equatorial Guinea",
+                          "Eritrea","Falkland Islands (Malvinas)","Fiji","French Southern Territories",
+                          "Gabon","Gambia","Greenland","Guinea","Guinea-Bissau","Guyana","Haiti","Iceland",
+                          "Iran, Islamic Republic of","Korea, Democratic People's Republic of","Kuwait",
+                          "Libya","Luxembourg","New Caledonia","Oman","Palestinian Territory, Occupied",
+                          "Papua New Guinea","Puerto Rico","Qatar","Solomon Islands","Somalia","South Sudan",
+                          "Sudan","Suriname","Swaziland","Syrian Arab Republic","Taiwan, Province of China",
+                          "Timor-Leste","Turkmenistan","United Arab Emirates","Uzbekistan","Vanatu","Western Sahara"];
   var countryPercents = {};
   var percentById = {};
-  var countryById = {},
-    countries = topojson.feature(world, world.objects.countries).features;
+  var countryById = {};
+  var countryDetails = {};
+    var countries = topojson.feature(world, world.objects.countries).features;
 
   //Adding countries to select
 
@@ -108,42 +202,61 @@ function ready(error, world, countryData, percentData) {
       percentById[d.id] = countryPercents[d.name];
     });
 
+    detailData.forEach(function(d) {
+      let arr = [];
+      arr.push(d.a)
+      arr.push(d.b)
+      arr.push(d.c)
+      arr.push(d.d)
+      arr.push(d.e)
+      countryDetails[d.name] = arr;
+    })
+
   
   });
 
-  const config = {
+  let config = {
     speed: 0.005,
-    verticalTilt: -30,
+    verticalTilt: -10,
     horizontalTilt: 0
   };
 
-  // function enableRotation() {
-  //   d3.timer(function(elapsed) {
-  //     projection.rotate([
-  //       config.speed * elapsed - 120,
-  //       config.verticalTilt,
-  //       config.horizontalTilt
-  //     ]);
-  //     svg.selectAll("path").attr("d", path);
-  //   });
-  // }
+
   
-  // function disableRotation() {
-  //   d3.timer(function(elapsed) {
-  //     projection.rotate([
-  //       config.speed * elapsed - 120,
-  //       config.verticalTilt,
-  //       config.horizontalTilt
-  //     ]);
-  //     svg.selectAll("path").attr("d", path);
-  //   });
-  // }
+  let stopRotation = false;
+  let lastElapsed = 0
+
+  const timerGlobeRotation = (elapsed) => {
+   
+    projection.rotate([
+      config.speed * (lastElapsed + elapsed) - 120,
+      config.verticalTilt,
+      config.horizontalTilt
+    ]);
+    svg.selectAll("path").attr("d", path);
+    if (stopRotation) {
+      lastElapsed += elapsed
+    }
+    return stopRotation
+  }
   
-  // enableRotation();
+  function enableRotation() {
+    d3.timer(timerGlobeRotation)
+  }
+  function stopGlobe() {
+    stopRotation = true
+    // if (!stopRotation) {
+    //   enableRotation();
+    // }
+  }
+  
+  enableRotation();
+
+  // setTimeout(stopGlobe, 3000)
 
 
   //Drawing countries on the globe
-
+  
   var world = svg
     .selectAll("path.land")
     .data(countries)
@@ -151,6 +264,7 @@ function ready(error, world, countryData, percentData) {
     .append("path")
     .attr("class", "land")
     .attr("d", path)
+
     // .style("fill", )
 
     .each(function(d, i) {
@@ -159,7 +273,10 @@ function ready(error, world, countryData, percentData) {
         d3.select(this).style("fill", "white");
         console.log("setting color white");
       } else {
-        d3.select(this).style("fill", getColorForPercentage(percentById[d.id]));
+        d3.select(this).style(
+          "fill",
+          getColorForPercentage(percentById[d.id])
+        );
       }
     })
     //Drag event
@@ -171,26 +288,93 @@ function ready(error, world, countryData, percentData) {
           var r = projection.rotate();
           return { x: r[0] / sens, y: -r[1] / sens };
         })
+        .on("dragstart", function() {
+          stopGlobe();
+        })
         .on("drag", function() {
           var rotate = projection.rotate();
-          projection.rotate([d3.event.x * sens, -d3.event.y * sens, rotate[2]]);
+          projection.rotate([
+            d3.event.x * sens,
+            -d3.event.y * sens,
+            rotate[2]
+          ]);
           svg.selectAll("path").attr("d", path);
           // svg.selectAll(".water").attr("d", path)
           svg.selectAll(".focused").classed("focused", (focused = false));
+
+          // lastElapsed += d3.event.x * sens
+          config.verticalTilt = -d3.event.y * sens;
+          config.horizontalTilt = rotate[2];
+        })
+        .on("dragend", function() {
+          stopGlobe();
         })
     )
-
-
 
     //Mouse events
 
     .on("click", function(d) {
       
-      console.log(d);
-      console.log(countryById[d.id]);
-      const showContent = d3.select("div.show-content")
-      showContent.selectAll("*").remove()
-      showContent.append("h1").text(countryById[d.id]);
+        let name = countryById[d.id];
+        let arr = [];
+        let alpha = ["A", "B", "C", "D", "E"]
+        countryDetails[name].forEach((val, idx) => {
+          if (val === "-") {
+            arr.push({name: "data not present", value: 0});
+          } else {
+            arr.push({name: alpha[idx], value: parseFloat(val)/100});
+          }
+        });
+        const showContentCont = d3.select("div.show-content-cont");
+          showContentCont
+            .selectAll("*")
+            .remove()
+
+        //https://stackoverflow.com/questions/24030267/d3-transition-for-transform-translate-not-working-for-div
+        // var startTranslateState = "translate(-300px,0px)";
+        // var endTranslateState = "translate(0px,0px)";
+        // var translateInterpolator = d3.interpolateString( startTranslateState, endTranslateState );
+        // d3.select(".show-content-cont")
+        //   .transition()
+        //   .styleTween("transform", function(d) {
+        //       return translateInterpolator;
+        //   })
+        //   .transition()
+        //   .style("border", "10px solid #798478")
+        //   .style("border-radius", "10px") 
+        //   .style("background-color", "white")     
+            //  d3.select(".show-content")
+            //    .transition()
+            //    .duration(1000)
+            //    .style("background-color", "pink");
+        showContentCont
+          .append("h1")
+          .text(countryById[d.id])
+          .append("p")
+          .attr("class", "show-content-p")
+          .text("The Five Metrics:")
+          .append("p")
+          .attr("class", "show-content-p")
+          .text("A: Proportion of women aged 20-24 years who were married or in a union before age 18")
+          .append("p")
+          .attr("class", "show-content-p")
+          .text("B: Percentage of women (aged 15+ years) who agree that a husband is justified in beating his wife/partner under certain circumstances")
+          .append("p")
+          .attr("class", "show-content-p")
+          .text("C: The extend to which there are legal grounds for abortion")
+          .append("p")
+          .attr("class", "show-content-p")
+          .text("D: Proportion of seats held by women in national parliaments")
+          .append("p")
+          .attr("class", "show-content-p")
+          .text("E: Proportion of ministerial/senior government positions held by women");
+        // showContentCont
+        //   .append("div")
+        //   .text(countryDetails[name].toString());
+        showContentCont
+          .append("svg")
+          .attr("class", "chart")
+        buildChart(arr);
     })
 
     .on("mouseover", function(d) {
@@ -212,11 +396,57 @@ function ready(error, world, countryData, percentData) {
 
   //Country focus on option select
 
-  d3.select("select").on("change", function() {
-    var rotate = projection.rotate(),
-      focusedCountry = country(countries, this),
-      p = d3.geo.centroid(focusedCountry);
+  d3.select("select").on("change", function(d) {
 
+    
+    var rotate = projection.rotate(),
+    focusedCountry = country(countries, this),
+    p = d3.geo.centroid(focusedCountry);
+
+    let name = countryById[focusedCountry.id];
+    let arr = [];
+    let alpha = ["A", "B", "C", "D", "E"];
+    countryDetails[name].forEach((val, idx) => {
+      if (val === "-") {
+        arr.push({ name: "data not present", value: 0 });
+      } else {
+        arr.push({ name: alpha[idx], value: parseFloat(val) / 100 });
+      }
+    });
+    const showContentCont = d3.select("div.show-content-cont");
+    showContentCont.selectAll("*").remove();
+    showContentCont
+      .append("h1")
+      .text(countryById[focusedCountry.id])
+      .append("p")
+      .attr("class", "show-content-p")
+      .text("The Five Metrics:")
+      .append("p")
+      .attr("class", "show-content-p")
+      .text(
+        "A: Proportion of women aged 20-24 years who were married or in a union before age 18"
+      )
+      .append("p")
+      .attr("class", "show-content-p")
+      .text(
+        "B: Percentage of women (aged 15+ years) who agree that a husband is justified in beating his wife/partner under certain circumstances"
+      )
+      .append("p")
+      .attr("class", "show-content-p")
+      .text("C: The extend to which there are legal grounds for abortion")
+      .append("p")
+      .attr("class", "show-content-p")
+      .text("D: Proportion of seats held by women in national parliaments")
+      .append("p")
+      .attr("class", "show-content-p")
+      .text(
+        "E: Proportion of ministerial/senior government positions held by women"
+      );
+    // showContentCont
+    //   .append("div")
+    //   .text(countryDetails[name].toString());
+    showContentCont.append("svg").attr("class", "chart");
+    buildChart(arr);
     svg.selectAll(".focused").classed("focused", (focused = false));
 
     //Globe rotating
@@ -235,7 +465,9 @@ function ready(error, world, countryData, percentData) {
                 return d.id == focusedCountry.id ? (focused = d) : false;
               });
           };
-        });
+        })
+        stopGlobe();
+        
     })();
   });
 
@@ -248,45 +480,3 @@ function ready(error, world, countryData, percentData) {
   }
 }
 
-// var rotationDelay = 3000;
-// var v0; // Mouse position in Cartesian coordinates at start of drag gesture.
-// var r0; // Projection rotation as Euler angles at start.
-// var q0; // Projection rotation as versor at start.
-// var lastTime = d3.now();
-// var degPerMs = degPerSec / 1000;
-// var autorotate, now, diff, rotation;
-
-// var degPerSec = 6;
-// var angles = { x: -20, y: 40, z: 0 };
-// function setAngles() {
-//   var rotation = projection.rotate();
-//   rotation[0] = angles.y;
-//   rotation[1] = angles.x;
-//   rotation[2] = angles.z;
-//   projection.rotate(rotation);
-// }
-
-// function startRotation(delay) {
-//   autorotate.restart(rotate, delay || 0);
-// }
-
-// function stopRotation() {
-//   autorotate.stop();
-// }
-
-// function dragended() {
-//   startRotation(rotationDelay);
-// }
-
-// function rotate(elapsed) {
-//   now = d3.now();
-//   diff = now - lastTime;
-//   if (diff < elapsed) {
-//     rotation = projection.rotate();
-//     rotation[0] += diff * degPerMs;
-//     projection.rotate(rotation);
-//   }
-//   lastTime = now;
-// }
-// setAngles();
-// autorotate = d3.timer(rotate);
