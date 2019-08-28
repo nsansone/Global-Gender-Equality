@@ -1,10 +1,20 @@
+
+@font-face { font-family: cove; src: url('coves_light.otf'); } 
+@font-face { font-family: cove-bold; src: url('coves_bold.otf'); } 
+@font-face { font-family: moon; src: url('moon.otf'); } 
 .content {
-  width: 100%;
+  max-width: 1600px;
+  /* width: 100%; */
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-flow: wrap;
 }
 .globe {
   width: 800px;
   height: 750px;
-  fill: darkred;
+  fill: #0D5163;
    filter: url("#yellow-glow");
 }
 .water {
@@ -18,12 +28,12 @@
   }
 
   .land:hover {
-    fill: #33CC33;
+    fill: lightsalmon;
     stroke-width: 1px;
   }
 
   .focused {
-    fill: #33CC33 !important;
+    fill: lightsalmon !important;
   }
 
   select {
@@ -53,17 +63,19 @@
   }
 
   header {
+    max-width: 1600px;
     display: flex;
     justify-content: space-between;
     height: 80px;
     align-items: center;
+    margin: 0 auto;
   }
 
   .title {
     font-size: 70px;
-    font-family: "Karla", sans-serif;
+    font-family: cove-bold, sans-serif;
     padding-left: 80px;
-    color: #373737;
+    color: #062C35;
   }
 
   .personal-links {
@@ -72,7 +84,7 @@
     justify-content: space-between;
     font-size: 35px;
     padding-right: 25px;
-    color: #373737;
+    color: #062C35;
   }
 
   body {
@@ -84,16 +96,10 @@
 
   .select-text {
     font-size: 32px;
-    font-family: "Karla", sans-serif;
+    font-family: cove, sans-serif;
     display: flex;
     align-items: center;
-    color: #373737;
-  }
-  
-  .content {
-    display: flex;
-    align-items: center;
-    
+    color: #062C35;
   }
 
   .show-content-cont {
@@ -102,16 +108,15 @@
     height: 600px;
     background-color: white;
     padding: 0px 25px;
-    border: 5px solid #958A7B;
-    border-radius: 10px;
-    margin-right: 50px;
+    box-shadow: 3px 3px 1px #E3C0A9, 5px 5px 10px 5px #E3C0A9;
+    margin-right: 20px;
     
   }
 
   .intro {
     font-size: 18px;
     text-align: justify;
-    font-family: "Karla", sans-serif;
+    font-family: cove, sans-serif;
     margin: 10px 0px;
   }
 
@@ -120,8 +125,8 @@
   .show-content-cont h1 {
     width: 100%;
     font-size: 45px;
-    font-family: "Karla", sans-serif;
-    color: #373737;
+    font-family: cove-bold, sans-serif;
+    color: #062C35;
     margin: 0px;
     padding-top: 10px;
 
@@ -135,8 +140,8 @@
 
 .no-data {
   font-size: 40px;
-  font-family: "Karla", sans-serif;
-  color: #373737;
+  font-family: cove, sans-serif;
+  color: #062C35;
   text-align: center;
   margin-top: 50px;
 
@@ -154,7 +159,7 @@
 }
 
 .bar {
-  fill: #cacaca;
+  fill: #D6D2BA;
 }
 
 .axis text {
@@ -170,5 +175,9 @@
 
 .x.axis path {
   display: none;
+}
+
+.highlight {
+  background: linear-gradient(180deg,rgba(227,192,169,0) 60%, #FFD0AE 50%);
 }
 

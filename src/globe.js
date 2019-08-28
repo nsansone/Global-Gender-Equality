@@ -1,9 +1,9 @@
 
 
-function type(d) {
-  d.value = +d.value; // coerce to number
-  return d;
-}
+// function type(d) {
+//   d.value = +d.value; // coerce to number
+//   return d;
+// }
 function buildChart(data) {
   var margin = { top: 20, right: 30, bottom: 30, left: 40 },
     width = 400 - margin.left - margin.right,
@@ -40,9 +40,7 @@ function buildChart(data) {
     );
     y.domain([
       0,
-      d3.max(data, function(d) {
-        return d.value;
-      })
+      1
     ]);
 
     chart
@@ -68,17 +66,26 @@ function buildChart(data) {
       .enter()
       .append("rect")
       .attr("class", "bar")
+      .attr("x", function(d, i) {
+        return x.rangeBand * i + 0.5 * i;
+      })
       .attr("x", function(d) {
         return x(d.name);
       })
+      .attr("width", x.rangeBand())
+      .transition()
+      .delay(function(d, i) {
+        return i * 100;
+      })
+
       .attr("y", function(d) {
         return y(d.value);
       })
       .attr("height", function(d) {
         return height - y(d.value);
-      })
-      .attr("width", x.rangeBand());
-      
+      });
+
+  
 }
 
 //bar chart help from https://bost.ocks.org/mike/bar/2/
@@ -88,9 +95,9 @@ var width = 800,
   focused;
 
 var percentColors = [
-  { pct: 0.0, color: { r: 169, g: 169, b: 169 } },
-  { pct: 0.5, color: { r: 128, g: 128, b: 128 } },
-  { pct: 1.0, color: { r: 0, g: 0, b: 0 } }
+  { pct: 0.0, color: { r: 255, g: 255, b: 255 } },
+  { pct: 0.5, color: { r: 204, g: 199, b: 169 } },
+  { pct: 1.0, color: { r: 86, g: 79, b: 65 } }
 ];
 
 var getColorForPercentage = function(pct) {
@@ -167,7 +174,7 @@ queue()
 //Main function
 
 function ready(error, world, countryData, percentData, detailData) {
-  const noDataCountries = ["Afghanistan", "Antartica", "Bahamas", "Brunei Darussalam","Burundi",
+  const noDataCountries = ["Afghanistan", "Antarctica", "Bahamas", "Brunei Darussalam","Burundi",
                           "Central African Republic", "Cuba","Cyprus","Djibouti","Equatorial Guinea",
                           "Eritrea","Falkland Islands (Malvinas)","Fiji","French Southern Territories",
                           "Gabon","Gambia","Greenland","Guinea","Guinea-Bissau","Guyana","Haiti","Iceland",
@@ -345,7 +352,8 @@ function ready(error, world, countryData, percentData, detailData) {
           .text(countryById[d.id])
           .append("p")
           .attr("class", "show-content-p")
-          .text("The Five Metrics:")
+          .html("<span class=\"highlight\">The Five Metrics:</span>")
+          
           .append("p")
           .attr("class", "show-content-p")
           .text("A: Proportion of women aged 20-24 years who were married or in a union before age 18")
@@ -354,7 +362,7 @@ function ready(error, world, countryData, percentData, detailData) {
           .text("B: Percentage of women (aged 15+ years) who agree that a husband is justified in beating his wife/partner under certain circumstances")
           .append("p")
           .attr("class", "show-content-p")
-          .text("C: The extend to which there are legal grounds for abortion")
+          .text("C: The extent to which there are legal grounds for abortion")
           .append("p")
           .attr("class", "show-content-p")
           .text("D: Proportion of seats held by women in national parliaments")
@@ -419,7 +427,7 @@ function ready(error, world, countryData, percentData, detailData) {
       .text(countryById[focusedCountry.id])
       .append("p")
       .attr("class", "show-content-p")
-      .text("The Five Metrics:")
+      .html('<span class="highlight">The Five Metrics:</span>')
       .append("p")
       .attr("class", "show-content-p")
       .text(
