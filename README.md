@@ -6,32 +6,32 @@ Global Gender Equality is a data visualization showing how different countries g
 
 ## Functionality
 
-*Will feature an interactive 3D globe that rotates when no country is selected
-*Users will be able to click on a country and get more data for  that specific country
-*Users will be able to shift throughout different years
-*Users will be able to filter by different equality metrics as well as look at an aggregate score
+* Will feature an interactive 3D globe that rotates when no country is selected
+* Users will be able to click on a country and get more data for  that specific country
+* Users will be able to shift throughout different years
+* Users will be able to filter by different equality metrics as well as look at an aggregate score
 
 ## MVPs
 
-*3D interactive globe
-*assembling data 
-*implementing way to look at data globally (color scales?)
-*implementing click to get more detailed look at data for one country
+* 3D interactive globe
+* Assembling data 
+* Implementing way to look at data globally (color scales?)
+* Implementing click to get more detailed look at data for one country
 
 ## Wireframe
 
 https://wireframe.cc/pro/pp/86d3a6157266646
 
-##Technologies
+## Technologies
 
-*Javascript
-*webpack
-*D3
-*D3 Geojson
-*HTML5
-*SVG
+* Javascript
+* webpack
+* D3
+* D3 Geojson
+* HTML5
+* SVG
 
 ## Bonus
 
-* more thorough breakdown of the US specifically
-* allow for further filtering by other categories such as age groups, income brackets, race, etc.
+* More thorough breakdown of the US specifically
+* Allow for further filtering by other categories such as age groups, income brackets, race, etc.
