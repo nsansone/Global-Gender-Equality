@@ -321,6 +321,7 @@ function ready(error, world, countryData, percentData, detailData) {
     //Mouse events
 
     .on("click", function(d) {
+      
         svg.selectAll(".focused").classed("focused", (focused = false));
         d3.select(this).attr("class", "focused");
         let name = countryById[d.id];
@@ -343,6 +344,7 @@ function ready(error, world, countryData, percentData, detailData) {
             arr.push({name: alpha[idx], value: parseFloat(val)/100});
           }
         });
+        const totalScore = Math.round(percentById[d.id]*10000)/100;
         const showContentCont = d3.select("div.show-content-cont");
         showContentCont
           .selectAll("*")
@@ -350,10 +352,10 @@ function ready(error, world, countryData, percentData, detailData) {
         showContentCont
           .append("h1")
           .text(countryById[d.id])
+          // .html(`<h1>${countryById[d.id]} <span class="show-content-total"><span class="highlight">total score: ${totalScore}<span class="percent" > %</span></span></span></h1>`)
           .append("p")
           .attr("class", "show-content-p")
           .html("<span class=\"highlight\">The Five Metrics:</span>")
-          
           .append("p")
           .attr("class", "show-content-p")
           .text("A: Proportion of women aged 20-24 years who were married or in a union before age 18")
@@ -368,7 +370,10 @@ function ready(error, world, countryData, percentData, detailData) {
           .text("D: Proportion of seats held by women in national parliaments")
           .append("p")
           .attr("class", "show-content-p")
-          .text("E: Proportion of ministerial/senior government positions held by women");
+          .text("E: Proportion of ministerial/senior government positions held by women")
+          .append("p")
+          .attr("class", "show-content-total")
+          .html(`<span class="highlight">total score: ${totalScore}<span class="percent" > %</span></span>`);
         showContentCont
           .append("svg")
           .attr("class", "chart")
@@ -410,15 +415,16 @@ function ready(error, world, countryData, percentData, detailData) {
              .append("p")
              .attr("class", "no-data")
              .text("Data has not been collected for this country in this study");
+    } else {
+      const totalScore = Math.round(percentById[focusedCountry.id] * 10000) / 100;
+      let arr = [];
+      let alpha = ["A", "B", "C", "D", "E"];
+      countryDetails[name].forEach((val, idx) => {
+        if (val === "-") {
+          arr.push({ name: "data not present", value: 0 });
         } else {
-    let arr = [];
-    let alpha = ["A", "B", "C", "D", "E"];
-    countryDetails[name].forEach((val, idx) => {
-      if (val === "-") {
-        arr.push({ name: "data not present", value: 0 });
-      } else {
-        arr.push({ name: alpha[idx], value: parseFloat(val) / 100 });
-      }
+          arr.push({ name: alpha[idx], value: parseFloat(val) / 100 });
+        }
     });
     const showContentCont = d3.select("div.show-content-cont");
     showContentCont.selectAll("*").remove();
@@ -430,14 +436,10 @@ function ready(error, world, countryData, percentData, detailData) {
       .html('<span class="highlight">The Five Metrics:</span>')
       .append("p")
       .attr("class", "show-content-p")
-      .text(
-        "A: Proportion of women aged 20-24 years who were married or in a union before age 18"
-      )
+      .text("A: Proportion of women aged 20-24 years who were married or in a union before age 18")
       .append("p")
       .attr("class", "show-content-p")
-      .text(
-        "B: Percentage of women (aged 15+ years) who agree that a husband is justified in beating his wife/partner under certain circumstances"
-      )
+      .text("B: Percentage of women (aged 15+ years) who agree that a husband is justified in beating his wife/partner under certain circumstances")
       .append("p")
       .attr("class", "show-content-p")
       .text("C: The extend to which there are legal grounds for abortion")
@@ -446,9 +448,9 @@ function ready(error, world, countryData, percentData, detailData) {
       .text("D: Proportion of seats held by women in national parliaments")
       .append("p")
       .attr("class", "show-content-p")
-      .text(
-        "E: Proportion of ministerial/senior government positions held by women"
-      );
+      .text("E: Proportion of ministerial/senior government positions held by women")
+      .attr("class", "show-content-total")
+      .html(`<span class="highlight">total score: ${totalScore}<span class="percent" > %</span></span>`);
       showContentCont.append("svg").attr("class", "chart");
       buildChart(arr);
     }

@@ -87,6 +87,10 @@
     color: #062C35;
   }
 
+  .link {
+    color: #062C35;
+  }
+
   body {
     /* background: url("https://jasperumc.org/wp-content/uploads/2018/10/wallpaper-cream-white-pattern-background-light-line-texture-x-rhwallherecom-ivory-off-paper-picture-free-1.jpg"); */
     background-size: cover;
@@ -105,7 +109,7 @@
   .show-content-cont {
   
     width: 550px;
-    height: 600px;
+    height: 650px;
     background-color: white;
     padding: 0px 25px;
     box-shadow: 3px 3px 1px #E3C0A9, 5px 5px 10px 5px #E3C0A9;
@@ -114,7 +118,7 @@
   }
 
   .intro {
-    font-size: 18px;
+    font-size: 22px;
     text-align: justify;
     font-family: cove, sans-serif;
     margin: 10px 0px;
@@ -133,9 +137,16 @@
   }
 
 .show-content-p {
+  font-size: 18px; 
+}
+
+.show-content-total {
+  font-size: 20px;
+  /* padding-left: 20px; */
+}
+.percent {
+  font-family: Verdana, sans-serif;
   font-size: 16px;
-  /* margin: 10px; */
-  
 }
 
 .no-data {
@@ -146,16 +157,9 @@
   margin-top: 50px;
 
 }
-/* .chart div {
-  font: 10px sans-serif;
-  background-color: steelblue;
-  text-align: right;
-  padding: 3px;
-  margin: 3px;
-  color: white;
-} */
+
 .chart {
-  padding: 10px;
+  padding: 10px 50px;
 }
 
 .bar {
