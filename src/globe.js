@@ -319,6 +319,9 @@ function ready(error, world, countryData, percentData, detailData) {
 
     //Mouse events
       .on("click", function(focusedCountry) {
+        d3.select("option")
+          .text(countryById[focusedCountry.id])
+          .property("selected", "true")
         var rotate = projection.rotate(),
           p = d3.geo.centroid(focusedCountry);
 
