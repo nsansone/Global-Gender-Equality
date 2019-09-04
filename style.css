@@ -4,18 +4,20 @@
 @font-face { font-family: moon; src: url('moon.otf'); } 
 .content {
   max-width: 1600px;
-  /* width: 100%; */
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-flow: wrap;
+  justify-content: space-around;
+  flex-flow: wrap-reverse;
 }
 .globe {
-  width: 800px;
-  height: 750px;
+  margin: 0 auto;
+  display: block;
+  width: 770px;
+  height: 770px;
   fill: #0D5163;
-   filter: url("#yellow-glow");
+  filter: url("#yellow-glow");
+  /* padding-right: 50px; */
 }
 .water {
     /* background: radial-gradient(circle at 100px 100px, #5cabff, #000);; */
@@ -44,7 +46,7 @@
     padding: 3px;
     box-shadow: inset 1px 1px 2px #ddd8dc;
     height: 40px;
-    margin-left: 15px;
+    margin-left: 30px;
     font-size: 14px;
 
   }
@@ -57,7 +59,6 @@
     padding: 5px;
     text-align: left;
     border: solid #ccc 1px;
-    /* color: #666; */
     font-size: 14px;
     font-family: sans-serif;
   }
@@ -69,6 +70,7 @@
     height: 80px;
     align-items: center;
     margin: 0 auto;
+    padding-bottom: 50px;
   }
 
   .title {
@@ -104,10 +106,16 @@
     display: flex;
     align-items: center;
     color: #062C35;
+    margin: 0px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+  }
+
+  .select-cont {
+    /* padding-left: 100px; */
   }
 
   .show-content-cont {
-  
     width: 550px;
     height: 650px;
     background-color: white;
@@ -141,7 +149,7 @@
 }
 
 .show-content-total {
-  font-size: 20px;
+  font-size: 22px;
   /* padding-left: 20px; */
 }
 .percent {
@@ -164,6 +172,9 @@
 
 .bar {
   fill: #D6D2BA;
+}
+.bar:hover {
+  fill: lightsalmon;
 }
 
 .axis text {
