@@ -173,7 +173,7 @@ function ready(error, world, countryData, percentData, detailData) {
                           "Central African Republic", "Cuba","Cyprus","Djibouti","Equatorial Guinea",
                           "Eritrea","Falkland Islands (Malvinas)","Fiji","French Southern Territories",
                           "Gabon","Gambia","Greenland","Guinea","Guinea-Bissau","Guyana","Haiti","Iceland",
-                          "Iran, Islamic Republic of","Korea, Democratic People's Republic of","Kuwait",
+                          "Islamic Republic of Iran","Democratic People's Republic of Korea","Kuwait",
                           "Libya","Luxembourg","New Caledonia","Oman","Palestinian Territory, Occupied",
                           "Papua New Guinea","Puerto Rico","Qatar","Solomon Islands","Somalia","South Sudan",
                           "Sudan","Suriname","Swaziland","Syrian Arab Republic","Taiwan, Province of China",
