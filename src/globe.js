@@ -347,7 +347,12 @@ function ready(error, world, countryData, percentData, detailData) {
               arr.push({ name: alpha[idx], value: parseFloat(val) / 100 });
             }
           });
-          const totalScore = Math.round(percentById[focusedCountry.id] * 10000) / 100;
+          let totalScore;
+          if (percentById[focusedCountry.id] === "-") {
+            totalScore = "-";
+          } else {
+            totalScore = Math.round(percentById[focusedCountry.id] * 10000) / 100;
+          }
           const showContentCont = d3.select("div.show-content-cont");
           showContentCont.selectAll("*").remove();
           showContentCont
@@ -449,7 +454,12 @@ function ready(error, world, countryData, percentData, detailData) {
              .attr("class", "no-data")
              .text("Data has not been collected for this country in this study");
     } else {
-      const totalScore = Math.round(percentById[focusedCountry.id] * 10000) / 100;
+      let totalScore;
+      if (percentById[focusedCountry.id] === "-"){
+        totalScore = "-";
+      } else {
+        totalScore = Math.round(percentById[focusedCountry.id] * 10000) / 100;
+      }
       let arr = [];
       let alpha = ["A", "B", "C", "D", "E"];
       countryDetails[name].forEach((val, idx) => {
