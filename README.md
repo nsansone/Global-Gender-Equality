@@ -21,8 +21,6 @@ Global Gender Equality is a data visualization showing how different countries g
 ## Wireframe
 ![wireframe image](./wireframe.png)
 
-https://wireframe.cc/pro/pp/86d3a6157266646
-
 ## Technologies
 
 * Javascript
