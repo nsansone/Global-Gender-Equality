@@ -19,7 +19,7 @@ Global Gender Equality is a data visualization showing how different countries g
 * Implementing click to get more detailed look at data for one country
 
 ## Wireframe
-![wireframe image](./wifreframe.pdf)
+![wireframe image](./wireframe.pdf)
 
 https://wireframe.cc/pro/pp/86d3a6157266646
 
