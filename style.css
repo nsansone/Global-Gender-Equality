@@ -146,10 +146,13 @@
 
 .show-content-p {
   font-size: 18px; 
+  font-family: cove, sans-serif;
+  color: #062C35;
 }
 
 .show-content-total {
   font-size: 22px;
+  color: #062C35;
   /* padding-left: 20px; */
 }
 .percent {
@@ -179,12 +182,13 @@
 
 .axis text {
   font: 10px sans-serif;
+  color: #062C35;
 }
 
 .axis path,
 .axis line {
   fill: none;
-  stroke: #000;
+  color: #062C35;
   shape-rendering: crispEdges;
 }
 
@@ -194,5 +198,7 @@
 
 .highlight {
   background: linear-gradient(180deg,rgba(227,192,169,0) 60%, #FFD0AE 50%);
+  font-family: cove-bold, sans-serif;
+  color: #062C35;
 }
 
