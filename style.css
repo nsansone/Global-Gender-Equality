@@ -9,6 +9,7 @@
   align-items: center;
   justify-content: space-around;
   flex-flow: wrap-reverse;
+  padding-top: 20px;
 }
 .globe {
   margin: 0 auto;
@@ -67,21 +68,23 @@
     max-width: 1600px;
     display: flex;
     justify-content: space-between;
-    height: 80px;
+    height: 100%;
     align-items: center;
     margin: 0 auto;
-    padding-bottom: 50px;
+    font-family: cove-bold, sans-serif;
   }
 
   .title {
-    font-size: 70px;
-    font-family: cove-bold, sans-serif;
-    padding-left: 80px;
+    font-size: 60px;
     color: #062C35;
+    margin: 0;
   }
-
+  .title-cont {
+    padding-left: 5px;
+    display: block;
+  }
   .personal-links {
-    width: 130px;
+    width: 180px;
     display: flex;
     justify-content: space-between;
     font-size: 35px;
@@ -109,6 +112,7 @@
     margin: 0px;
     padding-bottom: 20px;
     padding-left: 20px;
+    
   }
 
   .select-cont {
