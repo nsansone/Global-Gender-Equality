@@ -4,6 +4,8 @@
 
 Global Gender Equality is a data visualization showing how different countries globally stack up in regards to gender equality. The visualization will feature an interactive globe that allows you to focus in on individual countries and gain insight on how they perform in certain metrics for gender equality, as well as show an aggregate view from a zoomed-out perspective for comparison between different countries.
 
+![datavis gif](./datavis.gif)
+
 ## Functionality
 
 * Will feature an interactive 3D globe that rotates when no country is selected
